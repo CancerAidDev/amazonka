@@ -40,6 +40,8 @@ defaultEndpoint :: Service -> Region -> Endpoint
 defaultEndpoint (_svcPrefix -> p) r = go (CI.mk p)
   where
     go = \case
+        "mobiletargeting"
+            | otherwise -> region ("pinpoint." <> reg <> ".amazonaws.com")
         "iam"
             | china     -> region "iam.cn-north-1.amazonaws.com.cn"
             | govcloud  -> region "iam.us-gov.amazonaws.com"

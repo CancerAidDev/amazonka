@@ -12,6 +12,10 @@
     - [Package Names](#package-names)
 * [Licence](#licence)
 
+## Installation
+
+- ```stack build --fast --extra-lib-dirs=/usr/local/opt/icu4c/lib --extra-include-dirs=/usr/local/opt/icu4c/include```
+- ```stack install --fast --extra-lib-dirs=/usr/local/opt/icu4c/lib --extra-include-dirs=/usr/local/opt/icu4c/include```
 
 ## Description
 

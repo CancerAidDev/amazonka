@@ -954,7 +954,7 @@ pinpoint =
   Service
     { _svcAbbrev = "Pinpoint"
     , _svcSigner = v4
-    , _svcPrefix = "pinpoint"
+    , _svcPrefix = "mobiletargeting"
     , _svcVersion = "2016-12-01"
     , _svcEndpoint = defaultEndpoint pinpoint
     , _svcTimeout = Just 70
