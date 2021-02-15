@@ -132,7 +132,7 @@ perform :: ( MonadThrow m
         => Env
         -> Request a
         -> m (Either Error (Response a))
-perform Env{..} x = catches go handlers
+perform e@Env{..} x = catches go (handlers e)
   where
     go = do
         t           <- liftIO getCurrentTime
@@ -156,15 +156,16 @@ perform Env{..} x = catches go handlers
 
         Right <$> response _envLogger (_rqService x) (p x) rs
 
-    handlers =
-        [ Handler $ err
-        , Handler $ err . TransportError
-        ]
-      where
-        err e = logError _envLogger e >> return (Left e)
-
     p :: Request a -> Proxy a
     p = const Proxy
+
+handlers :: MonadIO m => Env -> [Handler m (Either Error b)]    
+handlers Env{..} =
+    [ Handler $ err
+    , Handler $ err . TransportError
+    ]
+  where
+    err e = logError _envLogger e >> return (Left e)
 
 configured :: (MonadReader r m, HasEnv r, AWSRequest a)
            => a
