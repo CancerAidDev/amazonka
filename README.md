@@ -14,6 +14,8 @@
 
 ## Installation
 
+- ```brew install icu4c```
+
 - ```stack build --fast --extra-lib-dirs=/usr/local/opt/icu4c/lib --extra-include-dirs=/usr/local/opt/icu4c/include```
 - ```stack install --fast --extra-lib-dirs=/usr/local/opt/icu4c/lib --extra-include-dirs=/usr/local/opt/icu4c/include```
 
